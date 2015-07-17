@@ -1,0 +1,31 @@
+public class ContactImport implements ApiCall {
+  private String AppName;
+  private String ApiKey;
+  private String apiKey;
+  private String appName;
+
+  ContactImport(String AppName, String ApiKey) {
+    AppName = appName;
+    ApiKey = apiKey;
+  }
+
+  public String getAppname() {
+    return appName;
+  }
+
+  public String getApiKey() {
+    return apiKey;
+  }
+
+  public void setAppName(String AppName) {
+    AppName = appName;
+  }
+
+  public void setApiKey(String ApiKey) {
+    ApiKey = apiKey;
+  }
+
+  public void call() {
+    System.out.println("Sending API call");
+  }
+}
