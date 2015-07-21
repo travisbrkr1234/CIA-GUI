@@ -136,13 +136,13 @@ public class AppCreds extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
+        try { //save button actions
             appName = jTextField1.getText();
             apiKey = jTextField2.getText();
             System.err.println(appName + " " +  apiKey);
             String content = "app name: " + appName + " API Key: " + apiKey;
             
-            File file = new File("C:\\Users\\carlos.ochoa\\Desktop\\settingsFile.txt");
+            File file = new File(System.getProperty("user.home") + "\\Desktop\\projectSettings.txt");
             
             if (!file.exists()) {
                 file.createNewFile();
@@ -155,9 +155,9 @@ public class AppCreds extends javax.swing.JFrame {
             Component frame = null;
             JOptionPane.showMessageDialog(frame, "You have saved your settings in: \n" + file);
             
-    } catch (IOException e){
-        e.printStackTrace();
-    }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
     protected void proceed() throws MalformedURLException, XmlRpcException {
   appName = jTextField1.getText();
@@ -167,12 +167,13 @@ public class AppCreds extends javax.swing.JFrame {
   try {
     ISClient thisclient = new ISClient(appName, apiKey);
     thisclient.printFirstContacts();
+    JOptionPane.showMessageDialog(null, "The Data Requested is Inbound!");
     System.exit(0);
     
   } catch (MalformedURLException e){
-    System.err.println("MalformedURLException Ya broke it" + e.getMessage());
+    System.err.println("MalformedURLException Ya broke:" + e.getMessage());
   } catch (XmlRpcException e) {
-    System.err.println("XmlRpcException Ya broke it" + e.getMessage());
+    System.err.println("XmlRpcException Ya broke: " + e.getMessage());
   }
 }
 
