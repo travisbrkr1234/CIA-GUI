@@ -72,6 +72,7 @@ public class ISClient implements Imports{
         this.contact.add("Fax2");
         this.contact.add("Fax2Type");
         this.contact.add("FirstName");
+        this.contact.add("_FK");
         this.contact.add("Groups");
         this.contact.add("Id");
         this.contact.add("JobTitle");
@@ -145,8 +146,8 @@ public class ISClient implements Imports{
           for (int i = 0; i < contacts.length; i++) {
               //Each item in the array is a struct
               Map contact = (Map) contacts[i];
-              System.out.println("Contact with email address " + contact.get("Email") + " was found and has ID " +
-                      contact.get("Id"));
+              System.out.println("Email: " + contact.get("Email") + " INF ID: " +
+                      contact.get("Id") + " FK: " + contact.get("_FK") + "");
           }
         } catch (XmlRpcException e) {
             System.err.println("XmlRpcException Ya broke it" + e.getMessage());
