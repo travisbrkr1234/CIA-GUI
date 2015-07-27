@@ -5,6 +5,14 @@
  */
 package csv.pkgimport.assistant.View;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import textfiles.ReadFile;
+
 /**
  *
  * @author carlos.ochoa
@@ -31,6 +39,12 @@ public class FilePicker extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooser1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -48,6 +62,24 @@ public class FilePicker extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+        // TODO add your handling code here:
+        String file_name = System.getProperty("user.home") + "\\Desktop\\projectSettings.csv";
+        
+        try {
+            ReadFile file = new ReadFile(file_name);
+            String[] aryLines = file.OpenFile();
+            
+            int i;
+            for (i=0; i<aryLines.length; i++) {
+                System.out.println(aryLines[i]);
+            }
+        }
+        catch (IOException e) {
+            System.out.println(e.getMessage());
+       }    
+    }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
      * @param args the command line arguments
